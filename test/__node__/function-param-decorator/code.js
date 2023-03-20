@@ -24,4 +24,7 @@ class Named {
     arg2: number,
     arg3: boolean
   ) : number { return 0; }
+
+  static staticProperty: number = 0;
+  memberProperty: string = "member";
 }

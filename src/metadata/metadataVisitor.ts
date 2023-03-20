@@ -3,7 +3,7 @@ import { types as t } from '@babel/core';
 import { serializeReturnType, serializeType } from './serializeType';
 
 function createMetadataDesignDecorator(
-  design: 'design:type' | 'design:paramtypes' | 'design:returntype' | 'design:typeinfo',
+  design: 'design:type' | 'design:paramtypes' | 'design:returntype' | 'design:typeinfo' | 'design:is_static',
   typeArg: t.Expression | t.SpreadElement | t.JSXNamespacedName | t.ArgumentPlaceholder
 ): t.Decorator {
   return t.decorator(
@@ -61,6 +61,18 @@ export function metadataVisitor(
           );
         }
       }
+
+      // for ReactGenie, emit whether the method is static
+      const staticFieldMethod = field.static;
+      if (staticFieldMethod) {
+        decorators!.push(
+          createMetadataDesignDecorator(
+            'design:is_static',
+            t.booleanLiteral(staticFieldMethod)
+          )
+        );
+      }
+
       break;
 
     case 'ClassProperty':
@@ -78,6 +90,16 @@ export function metadataVisitor(
           serializeType(classPath, field)
         )
       );
+      // for ReactGenie, emit whether the method is static
+      const staticFieldProperty = field.static;
+      if (staticFieldProperty) {
+        field.decorators!.push(
+          createMetadataDesignDecorator(
+            'design:is_static',
+            t.booleanLiteral(staticFieldProperty)
+          )
+        );
+      }
       break;
   }
 }
