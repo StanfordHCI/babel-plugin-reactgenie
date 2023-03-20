@@ -136,7 +136,7 @@ function serializeTypeReferenceNode(
    * ReferenceError at runtime due to babel transpile output.
    */
   if (isClassType(className, reference)) {
-    return t.identifier('Object');
+    return t.stringLiteral('name' in reference ? reference.name : 'Object');
   }
 
   /**
