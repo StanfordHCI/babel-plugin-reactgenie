@@ -186,7 +186,9 @@ function serializeReference(
 type SerializedType =
   | t.Identifier
   | t.UnaryExpression
-  | t.ConditionalExpression;
+  | t.ConditionalExpression
+  | t.ObjectExpression
+  | t.StringLiteral;
 
 /**
  * Actual serialization given the TS Type annotation.
@@ -217,7 +219,18 @@ function serializeTypeNode(className: string, node: t.TSType): SerializedType {
 
     case 'TSArrayType':
     case 'TSTupleType':
-      return t.identifier('Array');
+      // return t.identifier('Array');
+      if ('elementType' in node) {
+        const elementType = node.elementType;
+        return t.objectExpression(
+          [
+            t.objectProperty(t.identifier('elementType'), serializeTypeNode(className, elementType)),
+            t.objectProperty(t.identifier('type'), t.identifier('Array'))
+          ]
+        );
+      } else {
+        return t.identifier('Array');
+      }
 
     case 'TSTypePredicate':
     case 'TSBooleanKeyword':
