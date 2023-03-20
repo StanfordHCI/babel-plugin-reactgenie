@@ -10,7 +10,7 @@ var _graphql = require("@nestjs/graphql");
 
 var _xyz = require("xyz");
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _class2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _class, _class2;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,7 +26,7 @@ let Named = (_dec = function (target, key) {
   return (0, _graphql.Context)()(target, key, 1);
 }, _dec8 = function (target, key) {
   return (0, _decorator.default)(_xyz.Xyz)(target, key, 2);
-}, _dec9 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [typeof _graphql.Args === "undefined" ? Object : _graphql.Args, typeof _graphql.Context === "undefined" ? Object : _graphql.Context, Object]), (0, _based.default)(_class = _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = class Named {
+}, _dec9 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [typeof _graphql.Args === "undefined" ? Object : _graphql.Args, typeof _graphql.Context === "undefined" ? Object : _graphql.Context, Object]), _dec11 = (0, _based.default)(), _dec12 = Reflect.metadata("design:type", Function), _dec13 = Reflect.metadata("design:paramtypes", [String, Number, Boolean]), _dec14 = Reflect.metadata("design:returntype", Number), (0, _based.default)(_class = _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = class Named {
   constructor(param, param2) {
     this.param = param;
     this.param2 = param2;
@@ -34,4 +34,8 @@ let Named = (_dec = function (target, key) {
 
   methodName(args, context, xyz) {}
 
-}, (_applyDecoratedDescriptor(_class2.prototype, "methodName", [_dec5, _dec6, _dec7, _dec8, _dec9, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "methodName"), _class2.prototype)), _class2)) || _class) || _class) || _class) || _class) || _class);
+  static staticMethod(arg1, arg2, arg3) {
+    return 0;
+  }
+
+}, (_applyDecoratedDescriptor(_class2.prototype, "methodName", [_dec5, _dec6, _dec7, _dec8, _dec9, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "methodName"), _class2.prototype), _applyDecoratedDescriptor(_class2, "staticMethod", [_dec11, _dec12, _dec13, _dec14], Object.getOwnPropertyDescriptor(_class2, "staticMethod"), _class2)), _class2)) || _class) || _class) || _class) || _class) || _class);

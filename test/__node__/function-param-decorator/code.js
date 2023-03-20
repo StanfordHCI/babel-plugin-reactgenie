@@ -17,4 +17,11 @@ class Named {
     @Context() context: Context,
     @DecoFn(Xyz) xyz: any
   ) {}
+
+  @Based()
+  static staticMethod(
+    arg1: string,
+    arg2: number,
+    arg3: boolean
+  ) : number { return 0; }
 }

@@ -47,6 +47,19 @@ export function serializeType(
   return serializeTypeNode(className, annotation);
 }
 
+export function serializeReturnType(
+  classPath: NodePath<t.ClassDeclaration>,
+  path: NodePath<t.ClassMethod>
+) {
+  const node = path.node;
+  if (!node.returnType || node.returnType.type !== 'TSTypeAnnotation')
+    // only support explicit return types
+    return undefined;
+  const annotation = node.returnType.typeAnnotation;
+  const className = classPath.node.id ? classPath.node.id.name : '';
+  return serializeTypeNode(className, annotation);
+}
+
 function serializeTypeReferenceNode(
   className: string,
   node: t.TSTypeReference

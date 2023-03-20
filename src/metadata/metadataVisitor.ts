@@ -1,6 +1,6 @@
 import { NodePath } from '@babel/traverse';
 import { types as t } from '@babel/core';
-import { serializeType } from './serializeType';
+import { serializeReturnType, serializeType } from './serializeType';
 
 function createMetadataDesignDecorator(
   design: 'design:type' | 'design:paramtypes' | 'design:returntype' | 'design:typeinfo',
@@ -48,9 +48,19 @@ export function metadataVisitor(
           )
         )
       );
-      // Hint: `design:returntype` could also be implemented here, although this seems
-      // quite complicated to achieve without the TypeScript compiler.
-      // See https://github.com/microsoft/TypeScript/blob/f807b57356a8c7e476fedc11ad98c9b02a9a0e81/src/compiler/transformers/ts.ts#L1315
+
+      // for ReactGenie, only support explicit return type
+      if (field.returnType) {
+        const returnType = serializeReturnType(classPath, path as NodePath<t.ClassMethod>);
+        if (returnType) {
+          decorators!.push(
+            createMetadataDesignDecorator(
+              'design:returntype',
+              returnType
+            )
+          );
+        }
+      }
       break;
 
     case 'ClassProperty':
