@@ -1,9 +1,14 @@
 import { NodePath } from '@babel/traverse';
 import { types as t } from '@babel/core';
-import { serializeDestructuringType, serializeReturnType, serializeType } from './serializeType';
+import {
+  serializeDestructuringType,
+  serializeReturnArrayElementType,
+  serializeReturnType,
+  serializeType
+} from './serializeType';
 
 function createMetadataDesignDecorator(
-  design: 'design:type' | 'design:paramtypes' | 'design:returntype' | 'design:typeinfo' | 'design:is_static' | 'design:destructuringparamtypes',
+  design: 'design:type' | 'design:paramtypes' | 'design:returntype' | 'design:typeinfo' | 'design:is_static' | 'design:destructuringparamtypes' | 'design:returnarrayelementtype',
   typeArg: t.Expression | t.SpreadElement | t.JSXNamespacedName | t.ArgumentPlaceholder
 ): t.Decorator {
   return t.decorator(
@@ -49,14 +54,31 @@ export function metadataVisitor(
         )
       );
 
+      let returnArray = false;
+
       // for ReactGenie, only support explicit return type
       if (field.returnType) {
         const returnType = serializeReturnType(classPath, path as NodePath<t.ClassMethod>);
         if (returnType) {
+          if (returnType.type === 'Identifier' && returnType.name === 'Array') {
+            returnArray = true;
+          }
           decorators!.push(
             createMetadataDesignDecorator(
               'design:returntype',
               returnType
+            )
+          );
+        }
+      }
+
+      if (returnArray) {
+        const returnArrayElementType = serializeReturnArrayElementType(classPath, path as NodePath<t.ClassMethod>);
+        if (returnArrayElementType) {
+          decorators!.push(
+            createMetadataDesignDecorator(
+              'design:returnarrayelementtype',
+              returnArrayElementType
             )
           );
         }

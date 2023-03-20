@@ -60,6 +60,21 @@ export function serializeReturnType(
   return serializeTypeNode(className, annotation);
 }
 
+export function serializeReturnArrayElementType(
+  classPath: NodePath<t.ClassDeclaration>,
+  path: NodePath<t.ClassMethod>
+) {
+  const node = path.node;
+  if (!node.returnType || node.returnType.type !== 'TSTypeAnnotation')
+    // only support explicit return types
+    return undefined;
+  const annotation = node.returnType.typeAnnotation;
+  if (!t.isTSArrayType(annotation)) return undefined;
+  const elementAnnotation = annotation.elementType;
+  const className = classPath.node.id ? classPath.node.id.name : '';
+  return serializeTypeNode(className, elementAnnotation);
+}
+
 export function serializeDestructuringType(
   classPath: NodePath<t.ClassDeclaration>,
   param: Parameter

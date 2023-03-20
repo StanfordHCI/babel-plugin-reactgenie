@@ -10,7 +10,7 @@ var _graphql = require("@nestjs/graphql");
 
 var _xyz = require("xyz");
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _class, _class2, _class3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _class, _class2, _class3;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,7 +30,7 @@ let Named = (_dec = function (target, key) {
   arg1: String,
   arg2: Number,
   arg3: Boolean
-}]), (0, _based.default)(_class = _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = (_class3 = class Named {
+}]), _dec21 = (0, _based.default)(), _dec22 = Reflect.metadata("design:type", Function), _dec23 = Reflect.metadata("design:paramtypes", []), _dec24 = Reflect.metadata("design:returntype", Array), _dec25 = Reflect.metadata("design:returnarrayelementtype", String), (0, _based.default)(_class = _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = (_class3 = class Named {
   constructor(param, param2) {
     this.param = param;
     this.param2 = param2;
@@ -51,4 +51,8 @@ let Named = (_dec = function (target, key) {
     return "success";
   }
 
-}, _class3.staticProperty = 0, _class3), (_applyDecoratedDescriptor(_class2.prototype, "methodName", [_dec5, _dec6, _dec7, _dec8, _dec9, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "methodName"), _class2.prototype), _applyDecoratedDescriptor(_class2, "staticMethod", [_dec11, _dec12, _dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2, "staticMethod"), _class2), _applyDecoratedDescriptor(_class2.prototype, "destructuringMethod", [_dec16, _dec17, _dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "destructuringMethod"), _class2.prototype)), _class2)) || _class) || _class) || _class) || _class) || _class);
+  arrayMethod() {
+    return ["success"];
+  }
+
+}, _class3.staticProperty = 0, _class3), (_applyDecoratedDescriptor(_class2.prototype, "methodName", [_dec5, _dec6, _dec7, _dec8, _dec9, _dec10], Object.getOwnPropertyDescriptor(_class2.prototype, "methodName"), _class2.prototype), _applyDecoratedDescriptor(_class2, "staticMethod", [_dec11, _dec12, _dec13, _dec14, _dec15], Object.getOwnPropertyDescriptor(_class2, "staticMethod"), _class2), _applyDecoratedDescriptor(_class2.prototype, "destructuringMethod", [_dec16, _dec17, _dec18, _dec19, _dec20], Object.getOwnPropertyDescriptor(_class2.prototype, "destructuringMethod"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "arrayMethod", [_dec21, _dec22, _dec23, _dec24, _dec25], Object.getOwnPropertyDescriptor(_class2.prototype, "arrayMethod"), _class2.prototype)), _class2)) || _class) || _class) || _class) || _class) || _class);
