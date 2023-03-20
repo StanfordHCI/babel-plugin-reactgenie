@@ -208,7 +208,7 @@ function serializeTypeNode(className: string, node: t.TSType): SerializedType {
     case 'TSUndefinedKeyword':
     case 'TSNullKeyword':
     case 'TSNeverKeyword':
-      return createVoidZero();
+      return t.stringLiteral('void');
 
     case 'TSParenthesizedType':
       return serializeTypeNode(className, node.typeAnnotation);

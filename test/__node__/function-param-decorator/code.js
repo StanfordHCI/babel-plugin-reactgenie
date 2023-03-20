@@ -24,7 +24,7 @@ class Named {
     @Args() args: Args,
     @Context() context: Context,
     @DecoFn(Xyz) xyz: any
-  ) {}
+  ): void {}
 
   @Based()
   static staticMethod(
