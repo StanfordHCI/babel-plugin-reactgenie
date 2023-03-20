@@ -1,9 +1,9 @@
 import { NodePath } from '@babel/traverse';
 import { types as t } from '@babel/core';
-import { serializeReturnType, serializeType } from './serializeType';
+import { serializeDestructuringType, serializeReturnType, serializeType } from './serializeType';
 
 function createMetadataDesignDecorator(
-  design: 'design:type' | 'design:paramtypes' | 'design:returntype' | 'design:typeinfo' | 'design:is_static',
+  design: 'design:type' | 'design:paramtypes' | 'design:returntype' | 'design:typeinfo' | 'design:is_static' | 'design:destructuringparamtypes',
   typeArg: t.Expression | t.SpreadElement | t.JSXNamespacedName | t.ArgumentPlaceholder
 ): t.Decorator {
   return t.decorator(
@@ -69,6 +69,19 @@ export function metadataVisitor(
           createMetadataDesignDecorator(
             'design:is_static',
             t.booleanLiteral(staticFieldMethod)
+          )
+        );
+      }
+
+      // if the method is a destructuring parameter, emit the types of the destructured parameters
+      if (field.params.some(param => param.type === 'ObjectPattern')) {
+        const value = field.params.map(param => serializeDestructuringType(classPath, param))
+        decorators!.push(
+          createMetadataDesignDecorator(
+            'design:destructuringparamtypes',
+            t.arrayExpression(
+              value
+            )
           )
         );
       }

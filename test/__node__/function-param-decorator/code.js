@@ -27,4 +27,9 @@ class Named {
 
   static staticProperty: number = 0;
   memberProperty: string = "member";
+
+  @Based()
+  destructuringMethod(
+    { arg1, arg2, arg3 }: { arg1: string, arg2: number, arg3: boolean }
+  ) : string { return "success"; }
 }
