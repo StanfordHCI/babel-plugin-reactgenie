@@ -151,7 +151,7 @@ function serializeTypeReferenceNode(
       t.unaryExpression('typeof', reference),
       t.stringLiteral('undefined')
     ),
-    t.identifier('Object'),
+    t.stringLiteral('name' in reference ? reference.name : 'Object'),
     t.cloneDeep(reference)
   );
 }

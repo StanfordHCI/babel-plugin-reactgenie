@@ -4,6 +4,14 @@ import { Some } from 'some';
 import { Args, Context } from '@nestjs/graphql';
 import { Xyz } from 'xyz';
 
+class SomeClass {
+  constructor(
+    public readonly a: string,
+    public readonly b: number,
+    public readonly c: boolean
+  ) {}
+}
+
 @Based
 class Named {
   constructor(
@@ -34,5 +42,5 @@ class Named {
   ) : string { return "success"; }
 
   @Based()
-  arrayMethod(): string[] { return ["success"]; }
+  arrayMethod(): SomeClass[] { return [new SomeClass("a", 1, true)]; }
 }
