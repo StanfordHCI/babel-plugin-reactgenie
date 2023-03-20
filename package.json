@@ -19,6 +19,7 @@
   ],
   "scripts": {
     "dev": "babel src -w -d lib -x \".ts\"",
+    "prepare": "yarn build",
     "build": "yarn build:lib && yarn build:types",
     "prebuild:lib": "rimraf lib",
     "build:lib": "babel src -d lib -x \".ts\"",
