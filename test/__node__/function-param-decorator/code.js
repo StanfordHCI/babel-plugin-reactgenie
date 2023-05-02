@@ -38,9 +38,12 @@ class Named {
 
   @Based()
   destructuringMethod(
-    { arg1, arg2, arg3 }: { arg1: string, arg2: number, arg3: SomeClass[] }
+    { arg1, arg2 = 0, arg3 }: { arg1: string, arg2?: number, arg3: SomeClass[] }
   ) : string { return "success"; }
 
   @Based()
   arrayMethod(): SomeClass[] { return [new SomeClass("a", 1, true)]; }
 }
+
+function testFunction(
+  {arg1, arg2 = 0, arg3}: { arg1: string, arg2?: number, arg3: SomeClass[] }): string { return "success"; }
