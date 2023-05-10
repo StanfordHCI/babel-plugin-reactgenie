@@ -82,13 +82,13 @@ Inject()(Some.prototype, undefined, 0);
 With npm:
 
 ```sh
-npm install --dev --save babel-plugin-transform-typescript-metadata
+npm install --dev --save babel-plugin-reactgenie
 ```
 
 or with Yarn:
 
 ```sh
-yarn add --dev babel-plugin-transform-typescript-metadata
+yarn add --dev babel-plugin-reactgenie
 ```
 
 ## Usage
@@ -100,7 +100,7 @@ With `.babelrc`:
 ```js
 {
   "plugins": [
-    "babel-plugin-transform-typescript-metadata",
+    "babel-plugin-reactgenie",
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     ["@babel/plugin-proposal-class-properties", { "loose": true }],
   ],
