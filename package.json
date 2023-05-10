@@ -1,11 +1,11 @@
 {
-  "name": "babel-plugin-transform-typescript-metadata",
+  "name": "babel-plugin-reactgenie",
   "version": "0.3.2",
-  "description": "Babel plugin to emit decorator metadata like typescript compiler",
+  "description": "Replacement of babel-plugin-transform-typescript-metadata for ReactGenie",
   "main": "lib/plugin.js",
   "types": "lib/plugin.d.ts",
-  "repository": "https://github.com/leonardfactory/babel-plugin-transform-typescript-metadata.git",
-  "author": "Leonardo Ascione <leonardo.ascione@gmail.com>",
+  "repository": "https://github.com/StanfordHCI/babel-plugin-reactgenie.git",
+  "author": "Jackie Yang <jackie@jackieyang.me>",
   "license": "MIT",
   "files": [
     "lib/"

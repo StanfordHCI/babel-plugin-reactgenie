@@ -1,4 +1,8 @@
-# babel-plugin-transform-typescript-metadata
+# babel-plugin-reactgenie
+
+Modified version of `babel-plugin-transform-typescript-metadata` that provides extra annotations support for ReactGenie.
+
+# (old readme) babel-plugin-transform-typescript-metadata
 
 ![GitHub Workflow Build Status](https://img.shields.io/github/workflow/status/leonardfactory/babel-plugin-transform-typescript-metadata/CI/master)
 [![Codecov](https://img.shields.io/codecov/c/github/leonardfactory/babel-plugin-transform-typescript-metadata.svg)](https://codecov.io/gh/leonardfactory/babel-plugin-transform-typescript-metadata)
