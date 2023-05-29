@@ -272,6 +272,7 @@ function serializeTypeNode(className: string, node: t.TSType): SerializedType {
       if ("name" in node.typeName && node.typeName.name === 'LazyType') { // meaning the referred type is the actual type
         if (node.typeParameters && node.typeParameters.params.length == 1 && node.typeParameters.params[0].type == 'TSTypeReference') {
           referencedNode = node.typeParameters.params[0];
+          return t.stringLiteral('name' in referencedNode.typeName ? referencedNode.typeName.name : 'Object');
         } else {
           throw new Error('LazyType should have exactly one type parameter');
         }
