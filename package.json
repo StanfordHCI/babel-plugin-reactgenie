@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-reactgenie",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Replacement of babel-plugin-transform-typescript-metadata for ReactGenie",
   "main": "lib/plugin.js",
   "types": "lib/plugin.d.ts",
