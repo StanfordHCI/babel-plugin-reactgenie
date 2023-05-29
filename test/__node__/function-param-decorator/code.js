@@ -12,6 +12,8 @@ class SomeClass {
   ) {}
 }
 
+export type LazyType<T> = T;
+
 @Based
 class Named {
   constructor(
@@ -33,8 +35,12 @@ class Named {
     arg3: boolean
   ) : number { return 0; }
 
+  @Based()
   static staticProperty: number = 0;
+  @Based()
   memberProperty: string = "member";
+  @Based()
+  lazyProperty: LazyType<SomeClass> = new SomeClass("a", 1, true);
 
   @Based()
   destructuringMethod(

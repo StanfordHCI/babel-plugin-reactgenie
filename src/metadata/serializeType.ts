@@ -268,7 +268,15 @@ function serializeTypeNode(className: string, node: t.TSType): SerializedType {
       return t.identifier('Symbol');
 
     case 'TSTypeReference':
-      return serializeTypeReferenceNode(className, node);
+      let referencedNode = node;
+      if ("name" in node.typeName && node.typeName.name === 'LazyType') { // meaning the referred type is the actual type
+        if (node.typeParameters && node.typeParameters.params.length == 1 && node.typeParameters.params[0].type == 'TSTypeReference') {
+          referencedNode = node.typeParameters.params[0];
+        } else {
+          throw new Error('LazyType should have exactly one type parameter');
+        }
+      }
+      return serializeTypeReferenceNode(className, referencedNode);
 
     case 'TSIntersectionType':
     case 'TSUnionType':
