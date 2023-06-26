@@ -37,9 +37,6 @@ export default declare(
                * `babel-transform-typescript` do not strip the import.
                */
               (path.parentPath.scope as any).crawl();
-            },
-            FunctionDeclaration(path) {
-              console.log(path);
             }
           });
         }
