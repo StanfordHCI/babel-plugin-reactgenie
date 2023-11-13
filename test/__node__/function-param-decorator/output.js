@@ -10,7 +10,7 @@ var _graphql = require("@nestjs/graphql");
 
 var _xyz = require("xyz");
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _class, _class2, _init, _descriptor, _descriptor2, _class3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _class, _class2, _init, _descriptor, _descriptor2, _class3;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40,13 +40,31 @@ let Named = (_dec = function (target, key) {
 }, _dec8 = function (target, key) {
   return (0, _decorator.default)(_xyz.Xyz)(target, key, 2);
 }, _dec9 = Reflect.metadata("design:type", Function), _dec10 = Reflect.metadata("design:paramtypes", [typeof _graphql.Args === "undefined" ? "Args" : _graphql.Args, typeof _graphql.Context === "undefined" ? "Context" : _graphql.Context, Object]), _dec11 = Reflect.metadata("design:returntype", "void"), _dec12 = (0, _based.default)(), _dec13 = Reflect.metadata("design:type", Function), _dec14 = Reflect.metadata("design:paramtypes", [String, Number, Boolean]), _dec15 = Reflect.metadata("design:returntype", Number), _dec16 = Reflect.metadata("design:is_static", true), _dec17 = (0, _based.default)(), _dec18 = Reflect.metadata("design:type", Number), _dec19 = Reflect.metadata("design:is_static", true), _dec20 = (0, _based.default)(), _dec21 = Reflect.metadata("design:type", String), _dec22 = (0, _based.default)(), _dec23 = Reflect.metadata("design:type", "SomeClass"), _dec24 = (0, _based.default)(), _dec25 = Reflect.metadata("design:type", Function), _dec26 = Reflect.metadata("design:paramtypes", [Object]), _dec27 = Reflect.metadata("design:returntype", String), _dec28 = Reflect.metadata("design:destructuringparamtypes", [{
-  arg1: String,
-  arg2: Number,
+  arg1: {
+    type: String,
+    optional: false
+  },
+  arg2: {
+    type: Number,
+    optional: true
+  },
   arg3: {
-    elementType: typeof SomeClass === "undefined" ? "SomeClass" : SomeClass,
-    type: Array
+    type: {
+      elementType: typeof SomeClass === "undefined" ? "SomeClass" : SomeClass,
+      type: Array
+    },
+    optional: false
+  },
+  arg4: {
+    type: String,
+    optional: true
   }
-}]), _dec29 = (0, _based.default)(), _dec30 = Reflect.metadata("design:type", Function), _dec31 = Reflect.metadata("design:paramtypes", []), _dec32 = Reflect.metadata("design:returntype", {
+}]), _dec29 = Reflect.metadata("design:destructuringparamvalues", [{
+  arg1: void 0,
+  arg2: "0",
+  arg3: void 0,
+  arg4: void 0
+}]), _dec30 = (0, _based.default)(), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec33 = Reflect.metadata("design:returntype", {
   elementType: typeof SomeClass === "undefined" ? "SomeClass" : SomeClass,
   type: Array
 }), (0, _based.default)(_class = _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = (_class3 = class Named {
@@ -68,7 +86,8 @@ let Named = (_dec = function (target, key) {
   destructuringMethod({
     arg1,
     arg2 = 0,
-    arg3
+    arg3,
+    arg4
   }) {
     return "success";
   }
@@ -98,7 +117,7 @@ let Named = (_dec = function (target, key) {
   initializer: function () {
     return new SomeClass("a", 1, true);
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "destructuringMethod", [_dec24, _dec25, _dec26, _dec27, _dec28], Object.getOwnPropertyDescriptor(_class2.prototype, "destructuringMethod"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "arrayMethod", [_dec29, _dec30, _dec31, _dec32], Object.getOwnPropertyDescriptor(_class2.prototype, "arrayMethod"), _class2.prototype)), _class2)) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "destructuringMethod", [_dec24, _dec25, _dec26, _dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "destructuringMethod"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "arrayMethod", [_dec30, _dec31, _dec32, _dec33], Object.getOwnPropertyDescriptor(_class2.prototype, "arrayMethod"), _class2.prototype)), _class2)) || _class) || _class) || _class) || _class) || _class);
 
 function testFunction({
   arg1,

@@ -106,14 +106,74 @@ export function serializeDestructuringType(
               createVoidZero()
             );
           } else {
+            var result_array = [
+              t.objectProperty(t.identifier('type'), serializeTypeNode("", annotation)),
+              t.objectProperty(t.identifier('optional'), t.booleanLiteral(member.optional == true))
+            ];
             return t.objectProperty(
               t.identifier(key.name),
-              serializeTypeNode("", annotation)
+              t.objectExpression(result_array)
             );
           }
         });
         return t.objectExpression(properties);
       }
+    }
+  }
+}
+
+export function serializeDestructuringDefaultValues(
+  classPath: NodePath<t.ClassDeclaration>,
+  param: Parameter
+) {
+  // param = {"type":"ObjectPattern","start":899,"end":996,"loc":{"start":{"line":47,"column":4,"index":899},"end":{"line":47,"column":101,"index":996}},"properties":[{"type":"ObjectProperty","start":901,"end":905,"loc":{"start":{"line":47,"column":6,"index":901},"end":{"line":47,"column":10,"index":905}},"key":{"type":"Identifier","start":901,"end":905,"loc":{"start":{"line":47,"column":6,"index":901},"end":{"line":47,"column":10,"index":905},"identifierName":"arg1"},"name":"arg1"},"computed":false,"method":false,"shorthand":true,"value":{"type":"Identifier","start":901,"end":905,"loc":{"start":{"line":47,"column":6,"index":901},"end":{"line":47,"column":10,"index":905},"identifierName":"arg1"},"name":"arg1"},"extra":{"shorthand":true}},{"type":"ObjectProperty","start":907,"end":915,"loc":{"start":{"line":47,"column":12,"index":907},"end":{"line":47,"column":20,"index":915}},"key":{"type":"Identifier","start":907,"end":911,"loc":{"start":{"line":47,"column":12,"index":907},"end":{"line":47,"column":16,"index":911},"identifierName":"arg2"},"name":"arg2"},"computed":false,"method":false,"shorthand":true,"value":{"type":"AssignmentPattern","start":907,"end":915,"loc":{"start":{"line":47,"column":12,"index":907},"end":{"line":47,"column":20,"index":915}},"left":{"type":"Identifier","start":907,"end":911,"loc":{"start":{"line":47,"column":12,"index":907},"end":{"line":47,"column":16,"index":911},"identifierName":"arg2"},"name":"arg2"},"right":{"type":"NumericLiteral","start":914,"end":915,"loc":{"start":{"line":47,"column":19,"index":914},"end":{"line":47,"column":20,"index":915}},"extra":{"rawValue":0,"raw":"0"},"value":0}},"extra":{"shorthand":true}},{"type":"ObjectProperty","start":917,"end":921,"loc":{"start":{"line":47,"column":22,"index":917},"end":{"line":47,"column":26,"index":921}},"key":{"type":"Identifier","start":917,"end":921,"loc":{"start":{"line":47,"column":22,"index":917},"end":{"line":47,"column":26,"index":921},"identifierName":"arg3"},"name":"arg3"},"computed":false,"method":false,"shorthand":true,"value":{"type":"Identifier","start":917,"end":921,"loc":{"start":{"line":47,"column":22,"index":917},"end":{"line":47,"column":26,"index":921},"identifierName":"arg3"},"name":"arg3"},"extra":{"shorthand":true}},{"type":"ObjectProperty","start":923,"end":927,"loc":{"start":{"line":47,"column":28,"index":923},"end":{"line":47,"column":32,"index":927}},"key":{"type":"Identifier","start":923,"end":927,"loc":{"start":{"line":47,"column":28,"index":923},"end":{"line":47,"column":32,"index":927},"identifierName":"arg4"},"name":"arg4"},"computed":false,"method":false,"shorthand":true,"value":{"type":"Identifier","start":923,"end":927,"loc":{"start":{"line":47,"column":28,"index":923},"end":{"line":47,"column":32,"index":927},"identifierName":"arg4"},"name":"arg4"},"extra":{"shorthand":true}}],"typeAnnotation":{"type":"TSTypeAnnotation","start":929,"end":996,"loc":{"start":{"line":47,"column":34,"index":929},"end":{"line":47,"column":101,"index":996}},"typeAnnotation":{"type":"TSTypeLiteral","start":931,"end":996,"loc":{"start":{"line":47,"column":36,"index":931},"end":{"line":47,"column":101,"index":996}},"members":[{"type":"TSPropertySignature","start":933,"end":946,"loc":{"start":{"line":47,"column":38,"index":933},"end":{"line":47,"column":51,"index":946}},"key":{"type":"Identifier","start":933,"end":937,"loc":{"start":{"line":47,"column":38,"index":933},"end":{"line":47,"column":42,"index":937},"identifierName":"arg1"},"name":"arg1"},"computed":false,"typeAnnotation":{"type":"TSTypeAnnotation","start":937,"end":945,"loc":{"start":{"line":47,"column":42,"index":937},"end":{"line":47,"column":50,"index":945}},"typeAnnotation":{"type":"TSStringKeyword","start":939,"end":945,"loc":{"start":{"line":47,"column":44,"index":939},"end":{"line":47,"column":50,"index":945}}}}},{"type":"TSPropertySignature","start":947,"end":961,"loc":{"start":{"line":47,"column":52,"index":947},"end":{"line":47,"column":66,"index":961}},"key":{"type":"Identifier","start":947,"end":951,"loc":{"start":{"line":47,"column":52,"index":947},"end":{"line":47,"column":56,"index":951},"identifierName":"arg2"},"name":"arg2"},"computed":false,"optional":true,"typeAnnotation":{"type":"TSTypeAnnotation","start":952,"end":960,"loc":{"start":{"line":47,"column":57,"index":952},"end":{"line":47,"column":65,"index":960}},"typeAnnotation":{"type":"TSNumberKeyword","start":954,"end":960,"loc":{"start":{"line":47,"column":59,"index":954},"end":{"line":47,"column":65,"index":960}}}}},{"type":"TSPropertySignature","start":962,"end":980,"loc":{"start":{"line":47,"column":67,"index":962},"end":{"line":47,"column":85,"index":980}},"key":{"type":"Identifier","start":962,"end":966,"loc":{"start":{"line":47,"column":67,"index":962},"end":{"line":47,"column":71,"index":966},"identifierName":"arg3"},"name":"arg3"},"computed":false,"typeAnnotation":{"type":"TSTypeAnnotation","start":966,"end":979,"loc":{"start":{"line":47,"column":71,"index":966},"end":{"line":47,"column":84,"index":979}},"typeAnnotation":{"type":"TSArrayType","start":968,"end":979,"loc":{"start":{"line":47,"column":73,"index":968},"end":{"line":47,"column":84,"index":979}},"elementType":{"type":"TSTypeReference","start":968,"end":977,"loc":{"start":{"line":47,"column":73,"index":968},"end":{"line":47,"column":82,"index":977}},"typeName":{"type":"Identifier","start":968,"end":977,"loc":{"start":{"line":47,"column":73,"index":968},"end":{"line":47,"column":82,"index":977},"identifierName":"SomeClass"},"name":"SomeClass"}}}}},{"type":"TSPropertySignature","start":981,"end":994,"loc":{"start":{"line":47,"column":86,"index":981},"end":{"line":47,"column":99,"index":994}},"key":{"type":"Identifier","start":981,"end":985,"loc":{"start":{"line":47,"column":86,"index":981},"end":{"line":47,"column":90,"index":985},"identifierName":"arg4"},"name":"arg4"},"computed":false,"optional":true,"typeAnnotation":{"type":"TSTypeAnnotation","start":986,"end":994,"loc":{"start":{"line":47,"column":91,"index":986},"end":{"line":47,"column":99,"index":994}},"typeAnnotation":{"type":"TSStringKeyword","start":988,"end":994,"loc":{"start":{"line":47,"column":93,"index":988},"end":{"line":47,"column":99,"index":994}}}}}]}}}
+  if (!t.isObjectPattern(param)) {
+    return createVoidZero();
+  } else {
+    const paramProperties = param.properties;
+    if (!paramProperties) {
+      return createVoidZero();
+    } else {
+      const properties = paramProperties.map(member => {
+        if (!t.isObjectProperty(member)) {
+          throw new Error('Unexpected member type');
+        }
+        const key = member.key;
+        if (!t.isIdentifier(key)) {
+          throw new Error('Unexpected key type');
+        }
+        const value: t.Node = member.value;
+        if (value.type !== 'AssignmentPattern') {
+          return t.objectProperty(
+            t.identifier(key.name),
+            createVoidZero()
+          );
+        } else {
+          const valueExpression: t.Node = value.right;
+          if (!valueExpression) {
+            return t.objectProperty(
+              t.identifier(key.name),
+              createVoidZero()
+            );
+          } else {
+            const expressionStart = valueExpression.start;
+            const expressionEnd = valueExpression.end;
+            const classStart = classPath.node.start;
+            if (!expressionStart || !expressionEnd || !classStart) {
+              return t.objectProperty(
+                t.identifier(key.name),
+                createVoidZero()
+              );
+            } else {
+              return t.objectProperty(
+                t.identifier(key.name),
+                t.stringLiteral(classPath.getSource().substring(expressionStart - classStart, expressionEnd - classStart))
+              );
+            }
+          }
+        }
+      });
+      return t.objectExpression(properties);
     }
   }
 }

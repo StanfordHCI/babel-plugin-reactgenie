@@ -44,7 +44,7 @@ class Named {
 
   @Based()
   destructuringMethod(
-    { arg1, arg2 = 0, arg3 }: { arg1: string, arg2?: number, arg3: SomeClass[] }
+    { arg1, arg2 = 0, arg3, arg4 }: { arg1: string, arg2?: number, arg3: SomeClass[], arg4?: string }
   ) : string { return "success"; }
 
   @Based()
