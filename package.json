@@ -4,7 +4,7 @@
   "description": "Replacement of babel-plugin-transform-typescript-metadata for ReactGenie",
   "main": "lib/plugin.js",
   "types": "lib/plugin.d.ts",
-  "repository": "https://github.com/StanfordHCI/babel-plugin-reactgenie.git",
+  "repository": "StanfordHCI/babel-plugin-reactgenie",
   "author": "Jackie Yang <jackie@jackieyang.me>",
   "license": "MIT",
   "files": [
