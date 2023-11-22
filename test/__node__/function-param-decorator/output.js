@@ -10,7 +10,7 @@ var _graphql = require("@nestjs/graphql");
 
 var _xyz = require("xyz");
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _class, _class2, _init, _descriptor, _descriptor2, _class3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _dec28, _dec29, _dec30, _dec31, _dec32, _dec33, _dec34, _dec35, _dec36, _dec37, _dec38, _dec39, _class, _class2, _init, _descriptor, _descriptor2, _class3;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64,7 +64,14 @@ let Named = (_dec = function (target, key) {
   arg2: "0",
   arg3: void 0,
   arg4: void 0
-}]), _dec30 = (0, _based.default)(), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", []), _dec33 = Reflect.metadata("design:returntype", {
+}]), _dec30 = (0, _based.default)(), _dec31 = Reflect.metadata("design:type", Function), _dec32 = Reflect.metadata("design:paramtypes", [Object]), _dec33 = Reflect.metadata("design:returntype", String), _dec34 = Reflect.metadata("design:destructuringparamtypes", [{
+  arg1: {
+    type: String,
+    optional: false
+  }
+}]), _dec35 = Reflect.metadata("design:destructuringparamvalues", [{
+  arg1: void 0
+}]), _dec36 = (0, _based.default)(), _dec37 = Reflect.metadata("design:type", Function), _dec38 = Reflect.metadata("design:paramtypes", []), _dec39 = Reflect.metadata("design:returntype", {
   elementType: typeof SomeClass === "undefined" ? "SomeClass" : SomeClass,
   type: Array
 }), (0, _based.default)(_class = _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = (_class3 = class Named {
@@ -88,6 +95,12 @@ let Named = (_dec = function (target, key) {
     arg2 = 0,
     arg3,
     arg4
+  }) {
+    return "success";
+  }
+
+  async asyncMethod({
+    arg1
   }) {
     return "success";
   }
@@ -117,7 +130,7 @@ let Named = (_dec = function (target, key) {
   initializer: function () {
     return new SomeClass("a", 1, true);
   }
-}), _applyDecoratedDescriptor(_class2.prototype, "destructuringMethod", [_dec24, _dec25, _dec26, _dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "destructuringMethod"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "arrayMethod", [_dec30, _dec31, _dec32, _dec33], Object.getOwnPropertyDescriptor(_class2.prototype, "arrayMethod"), _class2.prototype)), _class2)) || _class) || _class) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, "destructuringMethod", [_dec24, _dec25, _dec26, _dec27, _dec28, _dec29], Object.getOwnPropertyDescriptor(_class2.prototype, "destructuringMethod"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "asyncMethod", [_dec30, _dec31, _dec32, _dec33, _dec34, _dec35], Object.getOwnPropertyDescriptor(_class2.prototype, "asyncMethod"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "arrayMethod", [_dec36, _dec37, _dec38, _dec39], Object.getOwnPropertyDescriptor(_class2.prototype, "arrayMethod"), _class2.prototype)), _class2)) || _class) || _class) || _class) || _class) || _class);
 
 function testFunction({
   arg1,

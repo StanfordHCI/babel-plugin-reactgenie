@@ -56,6 +56,13 @@ export function serializeReturnType(
     // only support explicit return types
     return undefined;
   const annotation = node.returnType.typeAnnotation;
+  // special case for Promise
+  if (t.isTSTypeReference(annotation) && t.isIdentifier(annotation.typeName) && annotation.typeName.name === 'Promise') {
+    if (annotation.typeParameters && annotation.typeParameters.params.length == 1) {
+      const className = classPath.node.id ? classPath.node.id.name : '';
+      return serializeTypeNode(className, annotation.typeParameters.params[0]);
+    }
+  }
   const className = classPath.node.id ? classPath.node.id.name : '';
   return serializeTypeNode(className, annotation);
 }

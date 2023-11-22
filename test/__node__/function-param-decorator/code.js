@@ -48,6 +48,11 @@ class Named {
   ) : string { return "success"; }
 
   @Based()
+  async asyncMethod(
+    { arg1 }: { arg1: string }
+  ) : Promise<string> { return "success"; }
+
+  @Based()
   arrayMethod(): SomeClass[] { return [new SomeClass("a", 1, true)]; }
 }
 
